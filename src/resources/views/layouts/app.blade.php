@@ -7,6 +7,7 @@
     <title>FashionablyLate</title>
     <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css" />
     <link rel="stylesheet" href="{{ asset('css/common.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/sanitize.css')}}">
     @yield('css')
 </head>
 
@@ -15,7 +16,7 @@
         <header class="header">
             <h1 class="header__heading">PiGLy</h1>
             <form class="weight-form" action="/weight_logs/goal_setting" method="get">
-                <input class="admin__create-btn " type="submit" value="目標体重設定">
+                <input class="admin__target-btn " type="submit" value="目標体重設定">
             </form>
             <ul class="header-nav">
                 @if (Auth::check())

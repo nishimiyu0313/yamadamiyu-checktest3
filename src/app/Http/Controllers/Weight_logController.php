@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\Weight_logRequest;
 use App\Models\Weight_log;
 use App\Models\Weight_target;
 use Illuminate\Support\Facades\Auth;
@@ -41,6 +42,28 @@ class Weight_logController extends Controller
         $Weight_logs = $query->paginate(8);
         return view('admin',compact('Weight_logs'));
     }
+
+    public function update(Request $request)
+    {
+        $Weight_logs = $request->only([
+            'user_id' => Auth::id(),
+            'date' => $request->date,
+            'weight' => $request->weight,
+            'calories' => $request->calorise,
+            'exercise_time' => $request->exercise_time,
+            'exercise_content' => $request->exercise_content,
+        ]);
+        Weight_log::find($request->id)->update($Weight_logs);
+        return redirect('/weight_logs');
+    }
+
+    public function destroy(Request $request)
+    {
+        Weight_log::find($request->id)->delete();
+        return redirect('/weight_logs');
+    }
+
+    
     public function  target(Request $request)
     {
         Weight_target::create([

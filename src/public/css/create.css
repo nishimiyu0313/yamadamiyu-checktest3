@@ -1,0 +1,60 @@
+.create__inner {
+  margin: 32px auto 0;
+  width: 30%;
+  font-size: 16px;
+}
+.create-form__group {
+  display: grid;
+  align-items: left;
+  margin-top: 32px;
+  display:flex;
+  flex-flow: column;
+  
+
+  grid-template-columns: 1fr 2fr;
+}
+.create-form__input{
+  padding: 20px;
+    width: 600px;
+    height: 50px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+.register-form__textarea{
+    padding: 20px;
+    width: 600px;
+    height: 50px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+.create-form__required{
+  font-size: 12px;
+  padding: 2px;
+  margin-left: 5px;
+  background-color: #ff0000;
+  color: #fffdfd;
+  text-align:left;
+}
+.btn{
+      display:flex;
+      justify-content: space-between;
+}
+.create-form__btn {
+  width: 150px;
+    height: 35px;
+    background:  linear-gradient(90deg, #9491eb, #f6a4ec);;
+    border-radius: 5px;
+    border: none;
+    
+}
+.back-form__btn{
+    width: 150px;
+    height: 35px;
+    color: #f9f5f9;
+    background: #b5b2b5;
+    border-radius: 5px;
+    border: none;
+    
+}

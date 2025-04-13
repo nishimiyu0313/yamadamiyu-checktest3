@@ -1,0 +1,24 @@
+.login-form__content {
+  margin: 0 auto;
+  padding: 30px 15px;
+  max-width: 1230px;
+}
+
+.login-form__heading {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.form {
+  margin: 0 auto;
+  width: 25%;
+  text-align: center;
+}
+
+.form__group {
+  margin-bottom: 5px;
+}
+
+.form__group-title {
+  text-align: left;
+}

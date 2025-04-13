@@ -20,8 +20,10 @@
                 <div class="create-form__date-inputs">
                     <input class="create-form__input contact-form__date-input" type="text" name="date" id="date">
                 </div>
-                <div class="register-form__error-message">
-
+                <div class="create-form__error-message">
+                    @error('date')
+                    {{ $message }}
+                    @enderror
 
                 </div>
             </div>
@@ -34,8 +36,10 @@
                 <div class="create-form__date-inputs">
                     <input class="create-form__input contact-form__date-input" type="text" name="weight" id="weight">
                 </div>
-                <div class="register-form__error-message">
-
+                <div class="create-form__error-message">
+                    @error('weight')
+                    {{ $message }}
+                    @enderror
 
                 </div>
             </div>
@@ -49,7 +53,9 @@
                     <input class="create-form__input contact-form__calories-input" type="text" name="calories" id="calories">
                 </div>
                 <div class="register-form__error-message">
-
+                    @error('calories')
+                    {{ $message }}
+                    @enderror
 
                 </div>
             </div>
@@ -62,8 +68,10 @@
                 <div class="create-form__exercise_time-inputs">
                     <input class="create-form__input contact-form__exercise_time-input" type="text" name="exercise_time" id="exercise_time">
                 </div>
-                <div class="register-form__error-message">
-
+                <div class="create-form__error-message">
+                    @error('exercise_time')
+                    {{ $message }}
+                    @enderror
 
                 </div>
             </div>
@@ -77,12 +85,20 @@
                     <textarea class="register-form__textarea" name="exercise_content" id="" cols="30" rows="10"></textarea>
                 </div>
                 <div class="create-form__error-message">
+                    @error('exercise_content')
+                    {{ $message }}
+                    @enderror
 
 
                 </div>
             </div>
-
-            <input class="create-form__btn btn" type="submit" value="登録">
+            <div class="btn">
+                <form action="/weight_logs" method="get">
+                    @csrf
+                    <input class="back-form__btn btn" type="submit" value="戻る">
+                </form>
+                <input class="create-form__btn" type="submit" value="登録">
+            </div>
         </form>
 
     </div>

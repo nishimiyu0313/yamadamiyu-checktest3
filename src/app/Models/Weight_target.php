@@ -10,9 +10,7 @@ class Weight_target extends Model
     use HasFactory;
 
     protected $fillable = [
-            'user_id',
-            'target_weight'
+        'user_id',
+        'target_weight'
     ];
-
-
 }

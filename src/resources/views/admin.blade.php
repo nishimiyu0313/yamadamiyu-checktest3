@@ -20,8 +20,9 @@
         @csrf
         <input class="search-form__date-input" type="date" name="date">~
         <input class="search-form__date-input" type="date" name="date">
-        <input class="search-form__search-btn btn" type="submit" value="検索">
+        <input class="search-form__search-btn" type="submit" value="検索">
     </form>
+    <button class="reset__button">リセット</button>
     <form class="create-form" action="/weight_logs/create" method="get">
         @csrf
         <input class="admin__create-btn " type="submit" value="データ追加">
