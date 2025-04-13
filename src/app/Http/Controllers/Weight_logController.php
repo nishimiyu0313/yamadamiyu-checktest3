@@ -64,13 +64,12 @@ class Weight_logController extends Controller
         return redirect('/weight_logs');
     }
 
-    
-    public function  target(Request $request)
+
+    public function  target_view(Request $request)
     {
-        Weight_target::create([
-            'user_id' => Auth::id(),
+        Weight_target::where('user_id', Auth::id())->update([
             'target_weight' => $request->target_weight,
         ]);
-        return redirect('/weight_logs');
+        return view('target', compact('weight_target'));
     }
 }

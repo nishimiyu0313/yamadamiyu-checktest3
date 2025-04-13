@@ -23,7 +23,8 @@ Route::middleware('auth')->group(
         Route::get('/weight_logs/search', [Weight_logController::class, 'search']);
         Route::get('/weight_logs/{:weightLogId}/update', [Weight_logController::class, 'update']);
         Route::get('/weight_logs/{:weightLogId}/delete', [Weight_logController::class, 'destroy']);
-        Route::get('/weight_logs/goal_setting', [Weight_logController::class, 'target']);
+        Route::get('/weight_logs/goal_setting', [Weight_logController::class, 'target_view']);
+        Route::post('/weight_logs/goal_setting', [Weight_logController::class, 'target']);
 
         Route::get('/register/step2', [profileController::class, 'profile']);
         Route::post('/register/step2', [profileController::class, 'store']);
