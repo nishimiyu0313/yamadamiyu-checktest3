@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
 use Laravel\Fortify\Fortify;
+use Laravel\Fortify\Contracts\RegisterResponse;
 
 class FortifyServiceProvider extends ServiceProvider
 {
@@ -20,7 +21,12 @@ class FortifyServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        $this->app->instance(RegisterResponse::class, new class implements RegisterResponse {
+            public function toResponse($request)
+            {
+                return redirect('/register/step2');
+            }
+        });
     }
 
     /**
@@ -30,11 +36,11 @@ class FortifyServiceProvider extends ServiceProvider
     {
         Fortify::createUsersUsing(CreateNewUser::class);
         Fortify::registerView(function () {
-                return view('auth.register');
+            return view('auth.register');
         });
 
         Fortify::loginView(function () {
-                return view('auth.login');
+            return view('auth.login');
         });
 
         RateLimiter::for(

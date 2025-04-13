@@ -15,6 +15,7 @@ class CreateProfilesTable extends Migration
     {
         Schema::create('profiles', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->decimal('target_weight', 4, 1);
             $table->decimal('now_weight', 4, 1);
             $table->timestamps();

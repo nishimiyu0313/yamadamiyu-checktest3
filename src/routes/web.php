@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Weight_logController;
+use App\Http\Controllers\profileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +25,7 @@ Route::middleware('auth')->group(
         Route::get('/weight_logs/{:weightLogId}/delete', [Weight_logController::class, 'destroy']);
         Route::get('/weight_logs/goal_setting', [Weight_logController::class, 'target']);
 
-        Route::get('/weight_logs/step2', [Weight_logController::class, 'profile']);
+        Route::get('/register/step2', [profileController::class, 'profile']);
+        Route::post('/register/step2', [profileController::class, 'store']);
     }
 );
