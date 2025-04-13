@@ -14,21 +14,25 @@
     <div class="app">
         <header class="header">
             <h1 class="header__heading">PiGLy</h1>
-            
             <form class="weight-form" action="/weight_logs/goal_setting" method="get">
                 <input class="admin__create-btn " type="submit" value="目標体重設定">
             </form>
-            <form class="form" action="/logout" method="post">
-                @csrf
-                <button class="header-nav__button">ログアウト</button>
-            </form>
-
+            <ul class="header-nav">
+                @if (Auth::check())
+                <li class="header-nav__item">
+                    <form class="form" action="/logout" method="post">
+                        @csrf
+                        <button class="header-nav__button">ログアウト</button>
+                    </form>
+                </li>
+                @endif
+            </ul>
             @yield('link')
         </header>
         <div class="content">
             @yield('content')
         </div>
-        </div>
+    </div>
 </body>
 
 </html>

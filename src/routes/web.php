@@ -14,11 +14,11 @@ use App\Http\Controllers\Weight_logController;
 |
 */
 
-Route::middleware('auth')->group(function () {
-    Route::get('/weight_logs', [Weight_logController::class, 'admin']);
-    Route::get('/weight_logs/create', [Weight_logController::class, 'create']);
-    Route::post('/weight_logs/create', [Weight_logController::class, 'store']);
-    Route::get('/weight_logs/goal_setting', [Weight_logController::class, 'target']);
 
-   
-});
+Route::get('/weight_logs', [Weight_logController::class, 'admin']);
+Route::get('/weight_logs/create', [Weight_logController::class, 'create']);
+Route::post('/weight_logs/create', [Weight_logController::class, 'store']);
+Route::get('/weight_logs/search', [Weight_logController::class, 'search']);
+Route::get('/weight_logs/goal_setting', [Weight_logController::class, 'target']);
+
+Route::get('/weight_logs/step2', [Weight_logController::class, 'profile']);

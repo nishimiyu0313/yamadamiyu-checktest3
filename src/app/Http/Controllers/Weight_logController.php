@@ -12,38 +12,41 @@ use Illuminate\Support\Facades\Auth;
 
 class Weight_logController extends Controller
 {
-    public function  admin(Request $request)
+    public function  admin()
     {
         return view('admin');
     }
-    public function create()
+    public function create(Request $request)
     {
         return view('create');
     }
     public function store(Request $request)
     {
-        $logs = $request->only([
-                'user_id',
-                'date',
-                'weight',
-                'calories',
-                'exercise_time',
-                'exercise_content',
+        Weight_log::create([
+            'user_id' => Auth::id(),
+            'date' => $request->date,
+            'weight' => $request->weight,
+            'calories' => $request->calorise,
+            'exercise_time' => $request->exercise_time,
+            'exercise_content' => $request->exercise_content,
         ]);
-        $data = Weight_log::create($logs);
-        redirect('/weight_logs');
-
-            
-        
-
+        return redirect('/weight_logs');
+    }
+    public function search(Request $request)
+    {
+        $query = Weight_log::query();
+        if ($request->date) {
+            $query = $query->whereDate('created_at', '=', $request->date);
+        }
+        $Weight_logs = $query->paginate(8);
+        return view('admin',compact('Weight_logs'));
     }
     public function  target(Request $request)
     {
         Weight_target::create([
             'user_id' => Auth::id(),
-            'weight_target' => $request->weight_target,
+            'target_weight' => $request->target_weight,
         ]);
-
         return redirect('/weight_logs');
     }
 }
