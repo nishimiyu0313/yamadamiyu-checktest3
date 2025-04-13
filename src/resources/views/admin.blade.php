@@ -38,9 +38,23 @@
 
     <tr class="admin__row">
         <td class="admin__date">
-
+            {{ $weight_log->date }}
+        </td>
+        <td class="admin__weight">
+            {{ $weight_log->weight }}
+        </td>
+        <td class="admin__calories">
+            {{ $weight_log->calories }}
+        </td>
+        <td class="admin__exercise_time">
+            {{ $weight_log->exercise_time }}
+        </td>
+        <td class="admin__exercise_content">
+            {{ $weight_log->exercise_content }}
         </td>
     </tr>
+    @endforeach
+
 </table>
 
 

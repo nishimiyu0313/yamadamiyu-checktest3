@@ -15,13 +15,14 @@ class Weight_logController extends Controller
 {
     public function  admin()
     {
-        return view('admin');
+        $weight_logs = Weight_log::where('user_id', Auth::id())->get();
+        return view('admin', compact('weight_logs'));
     }
     public function create(Request $request)
     {
         return view('create');
     }
-    public function store(Request $request)
+    public function store(Weight_logRequest $request)
     {
         Weight_log::create([
             'user_id' => Auth::id(),

@@ -18,7 +18,7 @@
                     日付<span class="create-form__required">必須</span>
                 </label>
                 <div class="create-form__date-inputs">
-                    <input class="create-form__input contact-form__date-input" type="text" name="date" id="date">
+                    <input class="create-form__input contact-form__date-input" type="date" name="date" id="date">
                 </div>
                 <div class="create-form__error-message">
                     @error('date')
@@ -66,7 +66,7 @@
                     運動時間<span class="create-form__required">必須</span>
                 </label>
                 <div class="create-form__exercise_time-inputs">
-                    <input class="create-form__input contact-form__exercise_time-input" type="text" name="exercise_time" id="exercise_time">
+                    <input class="create-form__input contact-form__exercise_time-input" type="time" name=" exercise_time" id="exercise_time">
                 </div>
                 <div class="create-form__error-message">
                     @error('exercise_time')
