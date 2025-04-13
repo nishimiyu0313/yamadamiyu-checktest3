@@ -14,6 +14,7 @@ class Weight_logFactory extends Factory
     public function definition()
     {
         return [
+            'user_id' => 1,
             'date' => $this->faker->date(),
             'weight' => $this->faker->randomFloat(1, 40, 60),
             'calories' => $this->faker->randomFloat(1200, 1300),

@@ -15,7 +15,10 @@ class Weight_targetsTableSeeder extends Seeder
     public function run()
     {
         DB::table('weight_targets')->insert([
-            ['target_weight' => '46.5']
+            [
+                'user_id' => 1,
+                'target_weight' => '46.5'
+            ]
         ]);
     }
 }
