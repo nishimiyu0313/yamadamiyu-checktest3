@@ -35,7 +35,7 @@
         <th class="admin__label">食事摂取カロリー</th>
         <th class="admin__label">運動時間</th>
     </tr>
-
+    @foreach ($weight_logs as $weight_log)
     <tr class="admin__row">
         <td class="admin__date">
             {{ $weight_log->date }}

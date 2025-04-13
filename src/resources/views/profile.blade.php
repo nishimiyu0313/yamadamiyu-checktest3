@@ -17,7 +17,7 @@
             </div>
             <div class="form__group-content">
                 <div class="form__input--text">
-                    <input type="text" name="weight" value='' />
+                    <input type="text" name="now_weight" value='' />
                 </div>
                 <div class="form__error">
                     @error('')
@@ -32,7 +32,7 @@
             </div>
             <div class="form__group-content">
                 <div class="form__input--text">
-                    <input type="text" name="now_weight" value='' />
+                    <input type="text" name="target_weight" value='' />
                 </div>
                 <div class="form__error">
                     @error('')
