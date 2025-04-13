@@ -7,6 +7,7 @@ use App\Http\Requests\Weight_logRequest;
 use App\Models\Weight_log;
 use App\Models\Weight_target;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Profile;
 
 
 
@@ -64,12 +65,17 @@ class Weight_logController extends Controller
         return redirect('/weight_logs');
     }
 
+    public function  target(Request $request)
+    {
+        Profile::where('user_id', Auth::id())->update([
+            'target_weight' => $request->target_weight,
+        ]);
+        return redirect('/weight_logs');
+    }
 
     public function  target_view(Request $request)
     {
-        Weight_target::where('user_id', Auth::id())->update([
-            'target_weight' => $request->target_weight,
-        ]);
+        $weight_target = Profile::where('user_id', Auth::id())->get()->first();
         return view('target', compact('weight_target'));
     }
 }
