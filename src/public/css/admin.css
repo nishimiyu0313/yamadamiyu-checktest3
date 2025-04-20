@@ -1,3 +1,14 @@
+.heading {
+    display: flex;
+    width: 1120px;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 30px;
+}
+
 .inner{
     width: 90%;
     margin: 0 auto;

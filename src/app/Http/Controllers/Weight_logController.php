@@ -14,9 +14,10 @@ use App\Models\Profile;
 
 class Weight_logController extends Controller
 {
+
     public function  admin()
     {
-        $weight_logs = Weight_log::where('user_id', Auth::id())->get();
+        $weight_logs = Weight_log::where('user_id', Auth::id())->get();       
         return view('admin', compact('weight_logs'));
     }
     public function create(Request $request)
@@ -33,31 +34,23 @@ class Weight_logController extends Controller
             'exercise_time' => $request->exercise_time,
             'exercise_content' => $request->exercise_content,
         ]);
-        return redirect('/weight_logs');
+        return redirect('/weight_logs');        
     }
     public function search(Request $request)
     {
-        $query = Weight_log::query();
-        if ($request->date) {
-            $query = $query->whereDate('created_at', '=', $request->date);
-        }
-        $Weight_logs = $query->paginate(8);
-        return view('admin',compact('Weight_logs'));
+        $userId=Auth::id();
+        $startDate=$request->start_date;
+        $endDate=$request->end_date;
+        $weightLogs = Weight_Log::with('user')->where('user_id', $userId)->DateSearch($startDate, $endDate)->Paginate(8)->appends([
+            'start_date' => $startDate,
+            'end_date' => $endDate
+        ]);
+        $latestWeightLog = Weight_Log::with('user')->where('user_id', $userId)->orderBy('created_at', 'desc')->first();
+        $weightTarget = Weight_Target::with('user')->where('user_id', $userId)->orderBy('created_at', 'desc')->first();
+        return view('admin', compact('weightLogs', 'weightTarget', 'latestWeightLog', 'startDate', 'endDate'));
     }
 
-    public function update(Request $request)
-    {
-        $Weight_logs = $request->only([
-            'user_id' => Auth::id(),
-            'date' => $request->date,
-            'weight' => $request->weight,
-            'calories' => $request->calorise,
-            'exercise_time' => $request->exercise_time,
-            'exercise_content' => $request->exercise_content,
-        ]);
-        Weight_log::find($request->id)->update($Weight_logs);
-        return redirect('/weight_logs');
-    }
+    
 
     public function destroy(Request $request)
     {
@@ -77,5 +70,17 @@ class Weight_logController extends Controller
     {
         $weight_target = Profile::where('user_id', Auth::id())->get()->first();
         return view('target', compact('weight_target'));
+    }
+
+    public function detail($weight_LogId)
+    {
+        $weight_Log = Weight_Log::find($weight_LogId);
+        return view('detail', compact('weight_Log'));
+    }
+    public function update(Request $request, $weight_LogId)
+    {
+        $weight_Log = $request->only(['date', 'weight', 'calories', 'exercise_time', 'exercise_content']);
+        Weight_Log::find($weight_LogId)->update($weight_Log);
+        return redirect('/weight_logs');
     }
 }
