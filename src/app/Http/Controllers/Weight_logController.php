@@ -17,8 +17,10 @@ class Weight_logController extends Controller
 
     public function  admin()
     {
-        $weight_logs = Weight_log::where('user_id', Auth::id())->get();       
-        return view('admin', compact('weight_logs'));
+        $weight_logs = Weight_log::where('user_id', Auth::id())->get();
+        $startDate = '';
+        $endDate = '';
+        return view('admin', compact('weight_logs', 'startDate', 'endDate'));
     }
     public function create(Request $request)
     {
