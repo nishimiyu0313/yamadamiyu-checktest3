@@ -12,7 +12,7 @@
     <div class="heading__group">
         <h5 class="heading__title">目標体重</h5>
         <div class="heading__number">
-            
+            {{$weight_target}}
             <span class="heading__kg">kg</span>
         </div>
     </div>
@@ -20,7 +20,7 @@
     <div class="heading__group">
         <h5 class="heading__title">目標まで</h5>
         <div class="heading__number">
-            
+           
             <span class="heading__kg">kg</span>
         </div>
     </div>
@@ -28,7 +28,7 @@
     <div class="heading__group">
         <h5 class="heading__title">最新体重</h5>
         <div class="heading__number">
-          
+            {{$latest_weight_log}}
             <span class="heading__kg">kg</span>
         </div>
     </div>
@@ -48,7 +48,7 @@
         @if($startDate || $endDate)
         <div class="weight-form__search-result">
             {{$startDate ? \Carbon\Carbon::parse($startDate)->format('Y年m月d日') : ''}}〜{{$endDate ? \Carbon\Carbon::parse($endDate)->format('Y年m月d日') : ''}}の検索結果
-            <span class="weight-form__search-result--total">{{$weightLogs->total()}}件</span>
+            <span class="weight-form__search-result--total">{{$weight_logs->total()}}件</span>
         </div>
         @endif
         <form class="create-form" action="/weight_logs/create" method="get">

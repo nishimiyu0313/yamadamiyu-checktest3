@@ -17,10 +17,13 @@ class Weight_logController extends Controller
 
     public function  admin()
     {
+        $userId = Auth::id();
         $weight_logs = Weight_log::where('user_id', Auth::id())->get();
         $startDate = '';
         $endDate = '';
-        return view('admin', compact('weight_logs', 'startDate', 'endDate'));
+        $weight_target = Weight_target::where('user_id', Auth::id())->get();
+        $latest_weight_log = Weight_Log::with('user')->where('user_id', $userId)->orderBy('created_at', 'desc')->first();
+        return view('admin', compact('weight_logs', 'startDate', 'endDate', 'weight_target', 'latest_weight_log'));
     }
     public function create(Request $request)
     {
@@ -43,13 +46,13 @@ class Weight_logController extends Controller
         $userId=Auth::id();
         $startDate=$request->start_date;
         $endDate=$request->end_date;
-        $weightLogs = Weight_Log::with('user')->where('user_id', $userId)->DateSearch($startDate, $endDate)->Paginate(8)->appends([
+        $weight_logs = Weight_Log::with('user')->where('user_id', $userId)->DateSearch($startDate, $endDate)->Paginate(8)->appends([
             'start_date' => $startDate,
             'end_date' => $endDate
         ]);
-        $latestWeightLog = Weight_Log::with('user')->where('user_id', $userId)->orderBy('created_at', 'desc')->first();
-        $weightTarget = Weight_Target::with('user')->where('user_id', $userId)->orderBy('created_at', 'desc')->first();
-        return view('admin', compact('weightLogs', 'weightTarget', 'latestWeightLog', 'startDate', 'endDate'));
+        $latest_weight_log = Weight_Log::with('user')->where('user_id', $userId)->orderBy('created_at', 'desc')->first();
+        $weight_target = Weight_Target::with('user')->where('user_id', $userId)->orderBy('created_at', 'desc')->first();
+        return view('admin', compact('weight_logs', 'startDate', 'endDate', 'weight_target', 'latest_weight_log'));
     }
 
     
