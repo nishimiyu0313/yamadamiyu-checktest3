@@ -14,7 +14,7 @@
   justify-content: space-between;
 }
 .heading__number{
-  
+  font-size: 40px;
 }
 
 .inner{
@@ -22,6 +22,10 @@
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
+    
+}
+.search-form{
+   display: flex;
 }
 
 .gorl__label {
@@ -29,7 +33,15 @@
   width: 45%;
   border-collapse: collapse;
 }
-
+.weight-form__search--button{
+  width: 90px;
+    height: 30px;
+    color: #f9f5f9;
+    background: #b5b2b5;
+    border-radius: 5px;
+    border: none;
+    font-size: 12px;
+}
 .search-form__search-btn {
     width: 90px;
     height: 30px;
@@ -37,6 +49,10 @@
     background: #b5b2b5;
     border-radius: 5px;
     border: none;
+}
+.weight-form__search-input{
+  border: 1px solid #ddd;
+    border-radius: 3px;
 }
 
 .reset__button{

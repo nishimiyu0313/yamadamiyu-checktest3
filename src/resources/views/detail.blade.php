@@ -16,7 +16,7 @@
                     <span class="detail-form__heading-name">日付</span>
                 </div>
                 <div class="detail-form__content-date">
-                    <input type="date" class="detail-form__input-date" name="date" value="{{old('date', \Carbon\Carbon::parse($weight_Log->date)->format('Y-m-d'))}}">
+                    <input type="date" class="detail-form__input detail-form__input-date" name="date" value="{{old('date', \Carbon\Carbon::parse($weight_Log->date)->format('Y-m-d'))}}">
                 </div>
                 <div class="detail-error">
                     @error('date')
@@ -29,7 +29,7 @@
                     <span class="detail-form__heading-name">体重</span>
                 </div>
                 <div class="detail-form__content-unit">
-                    <input type="text" class="detail-form__input-weight" name="weight" value="{{old('weight', $weight_Log->weight)}}">
+                    <input type="text" class="detail-form__input detail-form__input-weight" name="weight" value="{{old('weight', $weight_Log->weight)}}">
                     <span class="detail-form__input-unit">kg</span>
                 </div>
                 <div class="detail-error">
@@ -43,7 +43,7 @@
                     <span class="detail-form__heading-name">摂取カロリー</span>
                 </div>
                 <div class="detail-form__content-unit">
-                    <input type="text" class="detail-form__input-calories" name="calories" value="{{old('calories', $weight_Log->calories)}}">
+                    <input type="text" class="detail-form__input detail-form__input-calories" name="calories" value="{{old('calories', $weight_Log->calories)}}">
                     <span class="detail-form__input-unit">cal</span>
                 </div>
                 <div class="detail-error">
@@ -57,7 +57,7 @@
                     <span class="detail-form__heading-name">運動時間</span>
                 </div>
                 <div class="detail-form__content-time">
-                    <input type="time" class="detail-form__input-time" name="exercise_time" value="{{old('exercise_time', $weight_Log->exercise_time)}}">
+                    <input type="time" class="detail-form__input detail-form__input-time" name="exercise_time" value="{{old('exercise_time', $weight_Log->exercise_time)}}">
                 </div>
                 <div class="detail-error">
                     @error('exercise_time')
