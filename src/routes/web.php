@@ -22,12 +22,12 @@ Route::middleware('auth')->group(
         Route::get('/weight_logs/create', [Weight_logController::class, 'create']);
         Route::post('/weight_logs/create', [Weight_logController::class, 'store']);
         Route::get('/weight_logs/search', [Weight_logController::class, 'search']);
-        Route::get('/weight_logs/{:weightLogId}/update', [Weight_logController::class, 'update']);
-        Route::get('/weight_logs/{:weightLogId}/delete', [Weight_logController::class, 'destroy']);
+        Route::patch('/weight_logs/{weight_LogId}/update', [Weight_logController::class, 'update']);
+        Route::delete('/weight_logs/{weightLogId}/delete', [Weight_logController::class, 'destroy']);
         Route::get('/weight_logs/goal_setting', [Weight_logController::class, 'target_view']);
         Route::post('/weight_logs/goal_setting', [Weight_logController::class, 'target']);
         Route::get('/weight_logs/{weight_LogId}', [Weight_logController::class, 'detail']);
-        Route::patch('/weight_logs/{weight_LogId}/update', [Weight_logController::class, 'update']);
+    
 
         Route::get('/register/step2', [profileController::class, 'profile']);
         Route::post('/register/step2', [profileController::class, 'store']);

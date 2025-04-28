@@ -9,27 +9,29 @@
 @section('content')
 
 <div class="heading">
-    <div class="heading__group">
-        <h5 class="heading__title">目標体重</h5>
-        <div class="heading__number">
-            {{$weight_target}}
-            <span class="heading__kg">kg</span>
+    <div class="heading__inner">
+        <div class="heading__group">
+            <h5 class="heading__title">目標体重</h5>
+            <div class="heading__number">
+                {{$weight_target->target_weight}}
+                <span class="heading__kg">kg</span>
+            </div>
         </div>
-    </div>
-    <span class="line"></span>
-    <div class="heading__group">
-        <h5 class="heading__title">目標まで</h5>
-        <div class="heading__number">
-           
-            <span class="heading__kg">kg</span>
+        <span class="line"></span>
+        <div class="heading__group">
+            <h5 class="heading__title">目標まで</h5>
+            <div class="heading__number">
+
+                <span class="heading__kg">kg</span>
+            </div>
         </div>
-    </div>
-    <span class="line"></span>
-    <div class="heading__group">
-        <h5 class="heading__title">最新体重</h5>
-        <div class="heading__number">
-            {{$latest_weight_log}}
-            <span class="heading__kg">kg</span>
+        <span class="line"></span>
+        <div class="heading__group">
+            <h5 class="heading__title">最新体重</h5>
+            <div class="heading__number">
+                {{$latest_weight_log->weight}}
+                <span class="heading__kg">kg</span>
+            </div>
         </div>
     </div>
     <div class="inner">
@@ -82,7 +84,9 @@
                 {{ $weight_log->exercise_content }}
             </td>
             <td class="weight-logs__table--content">
-
+                <form class="create-form" action="/weight_logs/{{ $weight_log->id }}" method="get">
+                    @csrf
+                    <input class="admin__create-btn " type="submit" value="詳細">
                 </form>
             </td>
         </tr>

@@ -7,7 +7,6 @@ use App\Http\Requests\Weight_logRequest;
 use App\Models\Weight_log;
 use App\Models\Weight_target;
 use Illuminate\Support\Facades\Auth;
-use App\Models\Profile;
 
 
 
@@ -21,7 +20,7 @@ class Weight_logController extends Controller
         $weight_logs = Weight_log::where('user_id', Auth::id())->get();
         $startDate = '';
         $endDate = '';
-        $weight_target = Weight_target::where('user_id', Auth::id())->get();
+        $weight_target = Weight_target::where('user_id', Auth::id())->first();
         $latest_weight_log = Weight_Log::with('user')->where('user_id', $userId)->orderBy('created_at', 'desc')->first();
         return view('admin', compact('weight_logs', 'startDate', 'endDate', 'weight_target', 'latest_weight_log'));
     }
@@ -55,17 +54,15 @@ class Weight_logController extends Controller
         return view('admin', compact('weight_logs', 'startDate', 'endDate', 'weight_target', 'latest_weight_log'));
     }
 
-    
-
-    public function destroy(Request $request)
+    public function destroy(Request $request, $weight_LogId)
     {
-        Weight_log::find($request->id)->delete();
+        Weight_log::find($weight_LogId)->delete();
         return redirect('/weight_logs');
     }
 
     public function  target(Request $request)
     {
-        Profile::where('user_id', Auth::id())->update([
+        Weight_Target::where('user_id', Auth::id())->update([
             'target_weight' => $request->target_weight,
         ]);
         return redirect('/weight_logs');
@@ -73,7 +70,7 @@ class Weight_logController extends Controller
 
     public function  target_view(Request $request)
     {
-        $weight_target = Profile::where('user_id', Auth::id())->get()->first();
+        $weight_target = Weight_Target::where('user_id', Auth::id())->first();
         return view('target', compact('weight_target'));
     }
 
