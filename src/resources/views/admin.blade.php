@@ -46,7 +46,8 @@
             </div>
             <button class="weight-form__search--button" type="submit">検索</button>
         </form>
-        <button class="reset__button">リセット</button>
+        <button class="reset__button"
+            onclick="location.href='/weight_logs'">リセット</button>
         @if($startDate || $endDate)
         <div class="weight-form__search-result">
             {{$startDate ? \Carbon\Carbon::parse($startDate)->format('Y年m月d日') : ''}}〜{{$endDate ? \Carbon\Carbon::parse($endDate)->format('Y年m月d日') : ''}}の検索結果

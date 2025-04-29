@@ -8,12 +8,12 @@
 
 @section('content')
 
-<div class="target">
+<div class="goal-content">
     <form class="target-form" action="/weight_logs/goal_setting" method="post">
         @csrf
         <h2 class="target-form_heading">目標体重設定</h2>
         <input class="target-form__keyword-input" type="text" name="target_weight" value="{{ $weight_target->target_weight }}">kg
-        <input class="update-form__btn btn" type="submit" value="更新">
+        <input class="goal-setting__button-update" type="submit" value="更新">
         <div class="create-form__error-message">
             @error('target_weight')
             {{ $message }}
